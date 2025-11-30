@@ -88,3 +88,18 @@ console.log("Last index of Pop:", lastPopIndex);
 const baseArray = [1, 2, 3];
 const nestedArray = [baseArray, baseArray, baseArray]; // nest original array three times
 console.log("Value 2 from nested array:", nestedArray[0][1]);
+
+// Practice exercise 3.4 - working with object properties dynamically
+const myCar = {
+    make: "Toyota",
+    model: "Corolla",
+    year: 2018,
+    color: "Blue",
+    mileage: 45000,
+};
+let propertyName = "color";
+myCar[propertyName] = "Red"; // change color using bracket notation
+propertyName = "forSale";
+myCar[propertyName] = true; // add forSale property dynamically
+console.log(`Car: ${myCar.make} ${myCar.model}`);
+console.log("For sale:", myCar.forSale);
