@@ -23,6 +23,20 @@ let lastName = "Doe";
 let fullName = firstName + " " + lastName;
 console.log("Full Name: " + fullName); // Full Name: John Doe
 
+const distanceInMiles = 130;
+const distanceInKilometers = distanceInMiles * 1.60934;
+console.log(`The distance of ${distanceInKilometers.toFixed(4)} kms is equal to ${distanceInMiles} miles`);
+
+const heightInInches = 70;
+const weightInPounds = 160;
+const heightInCentimeters = heightInInches * 2.54;
+const weightInKilos = weightInPounds / 2.2046;
+console.log(`Height: ${heightInCentimeters.toFixed(2)} cm`);
+console.log(`Weight: ${weightInKilos.toFixed(2)} kg`);
+const heightInMeters = heightInCentimeters / 100;
+const bmi = weightInKilos / (heightInMeters ** 2);
+console.log(`BMI: ${bmi.toFixed(2)}`);
+
 let nr3 = 4;
 let str1 ="Hi";
 let result = str1 - nr3;
