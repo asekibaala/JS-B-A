@@ -103,3 +103,61 @@ propertyName = "forSale";
 myCar[propertyName] = true; // add forSale property dynamically
 console.log(`Car: ${myCar.make} ${myCar.model}`);
 console.log("For sale:", myCar.forSale);
+
+// Practice exercise 3.5 - storing friends inside object array
+const people = {
+    friends: [],
+};
+const friendOne = { firstName: "Alice", lastName: "Johnson", id: 1 };
+const friendTwo = { firstName: "Bob", lastName: "Smith", id: 2 };
+const friendThree = { firstName: "Carol", lastName: "Lee", id: 3 };
+people.friends.push(friendOne, friendTwo, friendThree);
+console.log("Friends array:", people.friends);
+
+// Practice exercise 3.6 - manipulating arrays to match specific layout
+const theList = [
+    "Laurence",
+    "Svekis",
+    true,
+    35,
+    null,
+    undefined,
+    { test: "one", score: 55 },
+    ["one", "two"],
+];
+theList.shift(); // remove first item
+theList.pop(); // remove last item
+theList.unshift("FIRST");
+theList[3] = "hello World";
+theList[2] = "MIDDLE";
+theList.push("LAST");
+console.log("Manipulated list:", theList);
+
+// Company product catalog - building inventory and querying
+const inventory = [];
+const itemOne = { name: "Laptop", model: "L-200", cost: 899.99, quantity: 12 };
+const itemTwo = { name: "Smartphone", model: "S-50", cost: 499.5, quantity: 30 };
+const itemThree = { name: "Headphones", model: "H-10", cost: 79.99, quantity: 50 };
+inventory.push(itemOne, itemTwo, itemThree);
+console.log("Inventory:", inventory);
+console.log("Quantity of third item:", inventory[2].quantity);
+inventory.push({ name: "Charger", model: "C-5", cost: 19.99, quantity: 100 });
+console.log("Updated inventory count:", inventory.length);
+
+// Self-check quiz answers with console explanations
+console.log("1. Can const arrays be updated?", "Yes, we can change their contents.");
+console.log("2. Property for array length:", "length");
+const myArr1 = [1, 3, 5, 6, 8, 9, 15];
+console.log("3a.", myArr1.indexOf(0)); // -1 since 0 not present
+console.log("3b.", myArr1.indexOf(3)); // 1 because 3 at index 1
+const myArr = [1, 3, 5, 6, 8, 9, 15];
+myArr[1] = 4; // replace second element
+console.log("4. Updated myArr:", myArr);
+const myArr2 = [];
+myArr2[10] = "test";
+console.log("5a.", myArr2);
+console.log("5b.", myArr2[2]); // undefined because slot empty
+const myArr3 = [3, 6, 8, 9, 3, 55, 553, 434];
+myArr3.sort();
+myArr3.length = 0; // clear array
+console.log("6.", myArr3[0]); // undefined since array cleared
