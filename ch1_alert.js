@@ -59,3 +59,27 @@ c %= b;
 console.log("a:", a);
 console.log("b:", b);
 console.log("c:", c);
+
+// Practice exercise 3.1 - shopping list operations
+const shoppingList = ["Milk", "Bread", "Apples"]; // starting list
+console.log("List length:", shoppingList.length);
+shoppingList[1] = "Bananas"; // replace Bread at index 1
+console.log("Updated list:", shoppingList);
+
+// Practice exercise 3.2 - extended shopping list manipulation steps
+const shoppingListTwo = []; // start with empty list
+shoppingListTwo.push("Milk", "Bread", "Apples");
+shoppingListTwo.splice(1, 1, "Bananas", "Eggs"); // swap Bread with Bananas and Eggs
+const removedItem = shoppingListTwo.pop(); // remove last item
+console.log("Removed item:", removedItem);
+shoppingListTwo.sort();
+console.log("Sorted list:", shoppingListTwo);
+const milkIndex = shoppingListTwo.indexOf("Milk");
+console.log("Index of Milk:", milkIndex);
+const bananasIndex = shoppingListTwo.indexOf("Bananas");
+shoppingListTwo.splice(bananasIndex + 1, 0, "Carrots", "Lettuce");
+const drinksList = ["Juice", "Pop"];
+const combinedList = shoppingListTwo.concat(drinksList, drinksList);
+console.log("Final list:", combinedList);
+const lastPopIndex = combinedList.lastIndexOf("Pop");
+console.log("Last index of Pop:", lastPopIndex);
