@@ -83,3 +83,8 @@ const combinedList = shoppingListTwo.concat(drinksList, drinksList);
 console.log("Final list:", combinedList);
 const lastPopIndex = combinedList.lastIndexOf("Pop");
 console.log("Last index of Pop:", lastPopIndex);
+
+// Practice exercise 3.3 - nested arrays with repeated values
+const baseArray = [1, 2, 3];
+const nestedArray = [baseArray, baseArray, baseArray]; // nest original array three times
+console.log("Value 2 from nested array:", nestedArray[0][1]);
