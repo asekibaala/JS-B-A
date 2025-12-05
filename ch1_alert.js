@@ -309,3 +309,24 @@ if (playerPick === computerPick) {
     gameResult = "Computer wins!";
 }
 console.log(`Player chose ${playerPick}, Computer chose ${computerPick}. ${gameResult}`);
+
+// Practice exercise 5.1 - number guessing game with feedback loop
+const maxGuessValue = 5;
+const solutionNumber = Math.floor(Math.random() * maxGuessValue) + 1;
+console.log(`[Dev] Solution number: ${solutionNumber}`); // comment out after testing
+let guessCorrect = false;
+while (!guessCorrect) {
+    const guessInput = Number(prompt(`Enter a number between 1 and ${maxGuessValue}:`));
+    if (Number.isNaN(guessInput) || guessInput < 1 || guessInput > maxGuessValue) {
+        console.log("Please enter a valid number within the range.");
+        continue;
+    }
+    if (guessInput === solutionNumber) {
+        console.log(`Correct! ${guessInput} is the solution.`);
+        guessCorrect = true;
+    } else if (guessInput < solutionNumber) {
+        console.log("Too low, try again.");
+    } else {
+        console.log("Too high, try again.");
+    }
+}
