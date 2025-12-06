@@ -386,3 +386,16 @@ if (currentRow && currentRow.length) {
     grid.push(currentRow);
 }
 console.table(grid);
+
+// Practice exercise 5.6 - array build with multiple output iterations
+const incrementArray = [];
+for (let x = 0; x < 10; x++) {
+    incrementArray.push(x);
+}
+console.log("Full increment array:", incrementArray);
+for (let i = 0; i < incrementArray.length; i++) {
+    console.log(`indexed loop -> ${i}: ${incrementArray[i]}`);
+}
+for (const value of incrementArray) {
+    console.log(`for...of loop -> value: ${value}`);
+}
