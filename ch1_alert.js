@@ -399,3 +399,17 @@ for (let i = 0; i < incrementArray.length; i++) {
 for (const value of incrementArray) {
     console.log(`for...of loop -> value: ${value}`);
 }
+
+// Practice exercise 5.7 - iterate over objects and arrays
+const simpleObject = {
+    firstItem: "Notebook",
+    secondItem: "Pencil",
+    thirdItem: "Eraser",
+};
+for (const propertyName in simpleObject) {
+    console.log(`Object property ${propertyName}: ${simpleObject[propertyName]}`);
+}
+const simpleArray = ["Notebook", "Pencil", "Eraser"];
+for (let index = 0; index < simpleArray.length; index++) {
+    console.log(`Array index ${index}: ${simpleArray[index]}`);
+}
