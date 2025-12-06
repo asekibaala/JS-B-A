@@ -330,3 +330,59 @@ while (!guessCorrect) {
         console.log("Too high, try again.");
     }
 }
+// Practice exercise 5.2 - increment counter with step using do-while loop
+let counter = 0;
+const counterStep = 5;
+do {
+    console.log(`Counter value: ${counter}`);
+    counter += counterStep;
+} while (counter <= 100);
+
+// Practice exercise 5.3 - build lessons array with alternating availability
+const myWork = [];
+for (let lessonNumber = 1; lessonNumber <= 10; lessonNumber++) {
+    const lessonStatus = lessonNumber % 2 !== 0 ? true : false;
+    const lessonEntry = {
+        name: `Lesson ${lessonNumber}`,
+        status: lessonStatus,
+    };
+    myWork.push(lessonEntry);
+}
+console.log("Lesson plan:", myWork);
+
+// Practice exercise 5.x - dynamic table generator with nested loops
+const myTable = [];
+const totalRows = 3;
+const totalColumns = 4;
+let cellCounter = 0;
+for (let currentRow = 0; currentRow < totalRows; currentRow++) {
+    const tempTable = [];
+    for (let currentColumn = 0; currentColumn < totalColumns; currentColumn++) {
+        cellCounter++;
+        tempTable.push(cellCounter);
+    }
+    myTable.push(tempTable);
+}
+console.table(myTable);
+
+
+
+// Practice exercise 5.5 - grid builder using single loop with row tracking
+const grid = [];
+const gridCells = 64;
+const gridColumns = 8;
+let currentRow;
+for (let mainCounter = 0; mainCounter < gridCells; mainCounter++) {
+    if (mainCounter % gridColumns === 0) {
+        if (currentRow && currentRow.length) {
+            grid.push(currentRow);
+        }
+        currentRow = [];
+    }
+    const cellValue = mainCounter;
+    currentRow.push(cellValue);
+}
+if (currentRow && currentRow.length) {
+    grid.push(currentRow);
+}
+console.table(grid);
