@@ -413,3 +413,15 @@ const simpleArray = ["Notebook", "Pencil", "Eraser"];
 for (let index = 0; index < simpleArray.length; index++) {
     console.log(`Array index ${index}: ${simpleArray[index]}`);
 }
+
+// Math multiplication table generator with nested loops
+const multiplicationTable = [];
+const multiplicationRange = 10;
+for (let row = 1; row <= multiplicationRange; row++) {
+    const rowValues = [];
+    for (let column = 1; column <= multiplicationRange; column++) {
+        rowValues.push(row * column);
+    }
+    multiplicationTable.push(rowValues);
+}
+console.table(multiplicationTable);
