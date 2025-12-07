@@ -548,3 +548,13 @@ function countdownGreaterThanZero(value) {
     return;
 }
 countdownGreaterThanZero(countdownStart);
+
+// Practice exercise 6.8 - function expression vs declaration
+const logValueExpression = function (input) {
+    console.log(`Function expression output: ${input}`);
+};
+logValueExpression("Expression argument");
+function logValueDeclaration(input) {
+    console.log(`Function declaration output: ${input}`);
+}
+logValueDeclaration("Declaration argument");
