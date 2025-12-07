@@ -452,3 +452,30 @@ function describePerson() {
     console.log(`${nameInput} is ${randomDescriptor}!`);
 }
 describePerson();
+
+// Practice exercise 6.3 - basic calculator supporting add/subtract operations
+function basicCalculator(firstValue, secondValue, operator = "+") {
+    if (operator === "-") {
+        return firstValue - secondValue;
+    }
+    return firstValue + secondValue;
+}
+const calcValueOne = 50;
+const calcValueTwo = 20;
+const calcOperator = "+";
+console.log(
+    `${calcValueOne} ${calcOperator} ${calcValueTwo} = ${basicCalculator(
+        calcValueOne,
+        calcValueTwo,
+        calcOperator,
+    )}`,
+);
+const secondOperator = "-";
+console.log(
+    `${calcValueOne} ${secondOperator} ${calcValueTwo} = ${basicCalculator(
+        calcValueOne,
+        calcValueTwo,
+        secondOperator,
+    )}`,
+);
+console.log(`Default operator result: ${basicCalculator(5, 8)}`);
