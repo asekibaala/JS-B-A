@@ -425,3 +425,12 @@ for (let row = 1; row <= multiplicationRange; row++) {
     multiplicationTable.push(rowValues);
 }
 console.table(multiplicationTable);
+
+// Practice exercise 6.1 - basic addition function usage examples
+function addTwoNumbers(firstNumber, secondNumber) {
+    return firstNumber + secondNumber;
+}
+const valueA = 12;
+const valueB = 30;
+console.log(`Sum of ${valueA} and ${valueB}: ${addTwoNumbers(valueA, valueB)}`);
+console.log(`Sum of 7 and 18: ${addTwoNumbers(7, 18)}`);
