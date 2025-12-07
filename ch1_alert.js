@@ -558,3 +558,29 @@ function logValueDeclaration(input) {
     console.log(`Function declaration output: ${input}`);
 }
 logValueDeclaration("Declaration argument");
+
+// Chapter project - recursive function counting up to 10
+function countUpToTen(startValue) {
+    console.log(`Count value: ${startValue}`);
+    if (startValue >= 10) {
+        return startValue;
+    }
+    return countUpToTen(startValue + 1);
+}
+countUpToTen(3);
+countUpToTen(8);
+
+// Chapter project - orchestrating console order with setTimeout
+const outputOne = () => console.log("One");
+const outputTwo = () => console.log("Two");
+const outputThree = () => {
+    console.log("Three");
+    outputOne();
+    outputTwo();
+};
+const outputFour = () => {
+    console.log("Four");
+    setTimeout(outputThree, 0);
+    setTimeout(outputOne, 0);
+};
+outputFour();
