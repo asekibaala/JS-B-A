@@ -434,3 +434,21 @@ const valueA = 12;
 const valueB = 30;
 console.log(`Sum of ${valueA} and ${valueB}: ${addTwoNumbers(valueA, valueB)}`);
 console.log(`Sum of 7 and 18: ${addTwoNumbers(7, 18)}`);
+
+
+// Practice exercise 6.2 - random description generator based on name input
+const descriptors = [
+    "brilliant",
+    "adventurous",
+    "creative",
+    "kind-hearted",
+    "determined",
+    "energetic",
+];
+function describePerson() {
+    const nameInput = prompt("Enter a person's name:");
+    const descriptorIndex = Math.floor(Math.random() * descriptors.length);
+    const randomDescriptor = descriptors[descriptorIndex];
+    console.log(`${nameInput} is ${randomDescriptor}!`);
+}
+describePerson();
