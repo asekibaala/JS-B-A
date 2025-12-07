@@ -501,3 +501,20 @@ for (let counterValue = 0; counterValue < 10; counterValue++) {
     loopResults.push(loopSum);
 }
 console.log("Loop addition results:", loopResults);
+
+// Practice exercise 6.5 - exploring IIFE behavior and scope
+let scopedValue = "1000";
+(function () {
+    let scopedValue = "Local scope value inside IIFE A";
+    console.log(`IIFE A local value: ${scopedValue}`);
+})();
+const scopedResult = (function () {
+    let scopedValue = "Local scope value inside IIFE B";
+    return scopedValue;
+})();
+console.log(`Global scopedValue after IIFEs: ${scopedValue}`);
+console.log(`Returned scopedResult value: ${scopedResult}`);
+(function (newValue) {
+    scopedValue = newValue;
+    console.log(`Anonymous function updated scopedValue to: ${scopedValue}`);
+})("Anonymous scope assignment");
