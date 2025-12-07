@@ -518,3 +518,14 @@ console.log(`Returned scopedResult value: ${scopedResult}`);
     scopedValue = newValue;
     console.log(`Anonymous function updated scopedValue to: ${scopedValue}`);
 })("Anonymous scope assignment");
+
+// Practice exercise 6.6 - recursive factorial calculator
+function factorial(value) {
+    if (value === 0) {
+        return 1;
+    }
+    return value * factorial(value - 1);
+}
+const factorialInput = 7;
+console.log(`Factorial of ${factorialInput}: ${factorial(factorialInput)}`);
+console.log(`Factorial of 10: ${factorial(10)}`);
