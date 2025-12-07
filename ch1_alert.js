@@ -529,3 +529,22 @@ function factorial(value) {
 const factorialInput = 7;
 console.log(`Factorial of ${factorialInput}: ${factorial(factorialInput)}`);
 console.log(`Factorial of 10: ${factorial(10)}`);
+
+// Practice exercise 6.7 - recursive countdown implementations
+const countdownStart = 10;
+function countdown(value) {
+    console.log(`Countdown value: ${value}`);
+    if (value < 1) {
+        return;
+    }
+    countdown(value - 1);
+}
+countdown(countdownStart);
+function countdownGreaterThanZero(value) {
+    console.log(`Second countdown value: ${value}`);
+    if (value > 0) {
+        return countdownGreaterThanZero(value - 1);
+    }
+    return;
+}
+countdownGreaterThanZero(countdownStart);
