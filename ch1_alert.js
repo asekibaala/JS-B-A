@@ -479,3 +479,25 @@ console.log(
     )}`,
 );
 console.log(`Default operator result: ${basicCalculator(5, 8)}`);
+
+let basicCalculatorF = (firstValue, secondValue, operator = "+") => {
+    if (operator === "-") {
+        return firstValue - secondValue;
+    }
+    return firstValue + secondValue;
+}
+
+console.log(`Arrow function result: ${basicCalculatorF(10, 4, "-")}`);
+
+// Practice exercise 6.4 - looped calculator storing results in array
+function loopAddition(firstValue, secondValue) {
+    return firstValue + secondValue;
+}
+const loopResults = [];
+for (let counterValue = 0; counterValue < 10; counterValue++) {
+    const multipliedValue = counterValue * 5;
+    const squaredValue = counterValue * counterValue;
+    const loopSum = loopAddition(multipliedValue, squaredValue);
+    loopResults.push(loopSum);
+}
+console.log("Loop addition results:", loopResults);
