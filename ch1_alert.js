@@ -585,7 +585,7 @@ const outputFour = () => {
 };
 outputFour();
 
-// Practice exercise 7.1 - Person class and friend greetings
+// Practice exercise 7.1 - Person class and friend greetings.
 class Person {
     constructor(firstName, lastName) {
         this.firstName = firstName;
@@ -599,3 +599,9 @@ const friendAnna = new Person("Anna", "Kwan");
 const friendMarcus = new Person("Marcus", "Diaz");
 console.log(`Hello, ${friendAnna.getFullName()}!`);
 console.log(`Hello, ${friendMarcus.getFullName()}!`);
+
+// Practice exercise 7.2 - generate full names via class method
+const person1 = new Person("Lena", "Nguyen");
+const person2 = new Person("Arman", "Singh");
+console.log(`Friend one: ${person1.getFullName()}`);
+console.log(`Friend two: ${person2.getFullName()}`);
