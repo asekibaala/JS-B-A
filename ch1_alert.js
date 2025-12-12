@@ -584,3 +584,18 @@ const outputFour = () => {
     setTimeout(outputOne, 0);
 };
 outputFour();
+
+// Practice exercise 7.1 - Person class and friend greetings
+class Person {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+const friendAnna = new Person("Anna", "Kwan");
+const friendMarcus = new Person("Marcus", "Diaz");
+console.log(`Hello, ${friendAnna.getFullName()}!`);
+console.log(`Hello, ${friendMarcus.getFullName()}!`);
