@@ -679,3 +679,33 @@ const baseUri = "http://www.basescripts.com?=";
 const requestValue = "Hello World";
 const fullUri = `${baseUri}${requestValue}`;
 console.log("Encoded web URI:", encodeURI(fullUri));
+
+// Practice exercise 8.2 - remove duplicates using filter and indexOf
+const names = [
+    "Laurence",
+    "Mike",
+    "Larry",
+    "Kim",
+    "Joanne",
+    "Laurence",
+    "Mike",
+    "Laurence",
+    "Mike",
+    "Laurence",
+    "Mike",
+];
+const uniqueNames = names.filter((value, index, array) => {
+    const firstMatchIndex = array.indexOf(value);
+    console.log(`Checking index ${index}: value="${value}", first match at ${firstMatchIndex}`);
+    return firstMatchIndex === index;
+});
+console.log("Unique names:", uniqueNames);
+
+// Practice exercise 8.3 - update arrays with map()
+const numberValues = [2, 4, 6, 8, 10];
+const doubledNumbers = numberValues.map(function (value) {
+    return value * 2;
+});
+console.log("Doubled numbers (function):", doubledNumbers);
+const doubledNumbersArrow = numberValues.map((value) => value * 2);
+console.log("Doubled numbers (arrow):", doubledNumbersArrow);
