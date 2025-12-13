@@ -591,20 +591,20 @@ class Person {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    getFullName() {
+    fullName() {
         return `${this.firstName} ${this.lastName}`;
     }
 }
 const friendAnna = new Person("Anna", "Kwan");
 const friendMarcus = new Person("Marcus", "Diaz");
-console.log(`Hello, ${friendAnna.getFullName()}!`);
-console.log(`Hello, ${friendMarcus.getFullName()}!`);
+console.log(`Hello, ${friendAnna.fullName()}!`);
+console.log(`Hello, ${friendMarcus.fullName()}!`);
 
 // Practice exercise 7.2 - generate full names via class method
 const person1 = new Person("Lena", "Nguyen");
 const person2 = new Person("Arman", "Singh");
-console.log(`Friend one: ${person1.getFullName()}`);
-console.log(`Friend two: ${person2.getFullName()}`);
+console.log(`Friend one: ${person1.fullName()}`);
+console.log(`Friend two: ${person2.fullName()}`);
 
 // Practice exercise 7.3 - animal class with sounds and actions
 class Animal {
@@ -648,3 +648,24 @@ for (const employee of employees) {
     console.log(`Employee spotlight: ${employee.getSummary()}`);
 }
 
+// Chapter project - menu items price calculator
+class MenuOrder {
+    #tacoPrice = 3.5;
+    #shakePrice = 4.25;
+    constructor(tacoCount, shakeCount) {
+        this.tacoCount = tacoCount;
+        this.shakeCount = shakeCount;
+    }
+    calculateTotal() {
+        return this.tacoCount * this.#tacoPrice + this.shakeCount * this.#shakePrice;
+    }
+    get totalCost() {
+        return this.calculateTotal();
+    }
+}
+const lunchOrder = new MenuOrder(3, 1);
+const snackOrder = new MenuOrder(1, 2);
+const feastOrder = new MenuOrder(5, 4);
+console.log(`Lunch order total: $${lunchOrder.totalCost.toFixed(2)}`);
+console.log(`Snack order total: $${snackOrder.totalCost.toFixed(2)}`);
+console.log(`Feast order total: $${feastOrder.totalCost.toFixed(2)}`);
