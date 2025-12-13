@@ -733,3 +733,20 @@ vowels.forEach((vowel, index) => {
     phrase = phrase.replaceAll(vowel, index.toString());
 });
 console.log("Vowel replaced phrase:", phrase);
+
+// Practice exercise 8.6 - experiments with Math object
+console.log("PI value:", Math.PI);
+const targetNumberMath = 5.7;
+console.log("Ceil:", Math.ceil(targetNumberMath));
+console.log("Floor:", Math.floor(targetNumberMath));
+console.log("Round:", Math.round(targetNumberMath));
+console.log("Random value:", Math.random());
+console.log("0-10 random:", Math.floor(Math.random() * 11));
+console.log("1-10 random:", Math.floor(Math.random() * 10) + 1);
+console.log("1-100 random:", Math.floor(Math.random() * 100) + 1);
+function randomInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+for (let count = 0; count < 100; count++) {
+    console.log(`Random ${count + 1}:`, randomInRange(1, 100));
+}
