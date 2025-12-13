@@ -605,3 +605,25 @@ const person1 = new Person("Lena", "Nguyen");
 const person2 = new Person("Arman", "Singh");
 console.log(`Friend one: ${person1.getFullName()}`);
 console.log(`Friend two: ${person2.getFullName()}`);
+
+// Practice exercise 7.3 - animal class with sounds and actions
+class Animal {
+    constructor(species, sound) {
+        this.species = species;
+        this.sound = sound;
+    }
+    speak() {
+        console.log(`${this.species} says "${this.sound}"`);
+    }
+}
+Animal.prototype.perform = function (activity) {
+    console.log(`${this.species} ${activity}.`);
+};
+const tiger = new Animal("Tiger", "Grrr");
+const dolphin = new Animal("Dolphin", "Eee-eee");
+tiger.speak();
+dolphin.speak();
+tiger.perform("prowls through the jungle");
+dolphin.perform("leaps over the waves");
+console.log("Tiger object:", tiger);
+console.log("Dolphin object:", dolphin);
