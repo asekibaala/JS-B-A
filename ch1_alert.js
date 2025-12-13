@@ -709,3 +709,27 @@ const doubledNumbers = numberValues.map(function (value) {
 console.log("Doubled numbers (function):", doubledNumbers);
 const doubledNumbersArrow = numberValues.map((value) => value * 2);
 console.log("Doubled numbers (arrow):", doubledNumbersArrow);
+
+// Practice exercise 8.4 - capitalize each word
+const messySentence = "thIs will be capiTalized for each word";
+function capitalizeWords(sentence) {
+    const normalized = sentence.toLowerCase();
+    const capitalizedWords = [];
+    normalized.split(" ").forEach((word) => {
+        const firstLetter = word.slice(0, 1).toUpperCase();
+        const remainder = word.slice(1);
+        const capitalizedWord = firstLetter + remainder;
+        capitalizedWords.push(capitalizedWord);
+    });
+    return capitalizedWords.join(" ");
+}
+console.log("Capitalized sentence:", capitalizeWords(messySentence));
+
+// Practice exercise 8.5 - vowel replacer with replaceAll
+let phrase = "I love JavaScript".toLowerCase();
+const vowels = ["a", "e", "i", "o", "u"];
+vowels.forEach((vowel, index) => {
+    console.log(`Replacing vowel "${vowel}" with ${index}`);
+    phrase = phrase.replaceAll(vowel, index.toString());
+});
+console.log("Vowel replaced phrase:", phrase);
