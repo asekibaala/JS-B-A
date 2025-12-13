@@ -669,3 +669,13 @@ const feastOrder = new MenuOrder(5, 4);
 console.log(`Lunch order total: $${lunchOrder.totalCost.toFixed(2)}`);
 console.log(`Snack order total: $${snackOrder.totalCost.toFixed(2)}`);
 console.log(`Feast order total: $${feastOrder.totalCost.toFixed(2)}`);
+
+// Practice exercise 8.1 - encode/decode URI components
+const encodedGreeting = "How's%20it%20going%3F";
+const regularGreeting = "How's it going?";
+console.log("Decoded greeting:", decodeURIComponent(encodedGreeting));
+console.log("Encoded greeting:", encodeURIComponent(regularGreeting));
+const baseUri = "http://www.basescripts.com?=";
+const requestValue = "Hello World";
+const fullUri = `${baseUri}${requestValue}`;
+console.log("Encoded web URI:", encodeURI(fullUri));
