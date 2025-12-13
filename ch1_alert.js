@@ -627,3 +627,24 @@ tiger.perform("prowls through the jungle");
 dolphin.perform("leaps over the waves");
 console.log("Tiger object:", tiger);
 console.log("Dolphin object:", dolphin);
+
+// Chapter project - employee tracking app
+class Employee {
+    constructor(firstName, lastName, yearsAtCompany) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.yearsAtCompany = yearsAtCompany;
+    }
+}
+Employee.prototype.getSummary = function () {
+    return `${this.firstName} ${this.lastName} has worked here for ${this.yearsAtCompany} year(s).`;
+};
+const employees = [
+    new Employee("Carmen", "Reed", 5),
+    new Employee("Jared", "Santos", 2),
+    new Employee("Priya", "Raman", 8),
+];
+for (const employee of employees) {
+    console.log(`Employee spotlight: ${employee.getSummary()}`);
+}
+
