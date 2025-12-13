@@ -750,3 +750,80 @@ function randomInRange(min, max) {
 for (let count = 0; count < 100; count++) {
     console.log(`Random ${count + 1}:`, randomInRange(1, 100));
 }
+
+// Practice exercise 8.7 - full month name from Date object
+const eventDate = new Date("2032-11-15");
+console.log("Raw date:", eventDate.toString());
+const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+];
+const eventDay = eventDate.getDate();
+const eventMonthIndex = eventDate.getMonth();
+const eventYear = eventDate.getFullYear();
+const formattedDate = `${monthNames[eventMonthIndex]} ${eventDay}, ${eventYear}`;
+console.log("Formatted date:", formattedDate);
+
+// Chapter project - word scrambler
+const originalWord = "javascript";
+function scrambleWord(word) {
+    let remaining = word;
+    let scrambled = "";
+    const originalLength = word.length;
+    for (let iteration = 0; iteration < originalLength; iteration++) {
+        const randomIndex = Math.floor(Math.random() * remaining.length);
+        const selectedLetter = remaining[randomIndex];
+        scrambled += selectedLetter;
+        console.log(
+            `Step ${iteration + 1}: selected "${selectedLetter}" -> scrambled="${scrambled}", before removal remaining="${remaining}"`,
+        );
+        remaining = remaining.slice(0, randomIndex) + remaining.slice(randomIndex + 1);
+        console.log(`Remaining after removal: "${remaining}"`);
+    }
+    return scrambled;
+}
+const scrambledResult = scrambleWord(originalWord);
+console.log(`Original word: "${originalWord}", Scrambled word: "${scrambledResult}"`);
+
+// Chapter project - countdown timer
+const countdownTargetDate = "2035-06-01T00:00:00";
+function countdown(endDateString) {
+    const endDateMs = Date.parse(endDateString);
+    const currentMs = Date.now();
+    const totalMs = endDateMs - currentMs;
+    const days = Math.floor(totalMs / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((totalMs / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((totalMs / (1000 * 60)) % 60);
+    const seconds = Math.floor((totalMs / 1000) % 60);
+    return {
+        totalMilliseconds: totalMs,
+        days,
+        hours,
+        minutes,
+        seconds,
+    };
+}
+function logCountdown() {
+    const countdownValues = countdown(countdownTargetDate);
+    let output = "";
+    for (const property in countdownValues) {
+        output += `${property}: ${countdownValues[property]} `;
+    }
+    console.log(`Countdown -> ${output.trim()}`);
+    if (countdownValues.totalMilliseconds <= 0) {
+        console.log("Countdown completed.");
+        return;
+    }
+    setTimeout(logCountdown, 1000);
+}
+logCountdown();
