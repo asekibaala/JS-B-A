@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <div class="output"></div>
+   <script>
+    const output = document.querySelector('.output');
+    output.textContent = 'Setting up the output element...';
+    output.classList.add('red');
+    output.id = 'tester';
+    output.style.backgroundColor = 'red';
+    const url = document.URL;
+    console.log(url);
+    output.textContent = url;
+  </script>
+</html>

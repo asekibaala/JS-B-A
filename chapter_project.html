@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="output">
+      <h1>Hello</h1>
+      <div>Test</div>
+      <ul>
+        <li id="one">One</li>
+        <li class="red">Two</li>
+      </ul>
+      <div>Test</div>
+      <div>Test2</div>
+      <div>Tes4</div>
+    </div>
+    <script>
+      const outputElement = document.querySelector('.output');
+      const mainList = outputElement.querySelector('ul');
+      mainList.id = 'mainList';
+
+      const divElements = outputElement.querySelectorAll('div');
+      const tagNames = Array.from(divElements, (div) => div.tagName);
+      console.log(tagNames);
+
+      divElements.forEach((div, index) => {
+        div.id = `id${index + 1}`;
+        div.style.color = index % 2 === 0 ? 'red' : 'blue';
+      });
+    </script>
+  </body>
+</html>
