@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Practice 10.6</h1>
+    <div class="grouped">First grouped item (div).</div>
+    <p class="grouped">Second grouped item (p).</p>
+    <section class="grouped">Third grouped item (section).</section>
+    <span class="grouped">Fourth grouped item (span).</span>
+    <script>
+      const groupedElements = document.querySelectorAll('.grouped');
+      console.log('All grouped elements as NodeList:', groupedElements);
+
+      groupedElements.forEach((el, index) => {
+        console.log(`Grouped element ${index}:`, el);
+      });
+    </script>
+  </body>
+</html>
