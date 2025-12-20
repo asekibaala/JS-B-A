@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+<div>
+<title>Complete JavaScript Course</title>
+<div id="message">Complete JavaScript Course</div>
+<input type="text" id="addItem">
+<input type="button" id="addNew" value="Add to List"> </div>
+<div id="output">
+<h1>Shopping List</h1>
+<ol id="sList"> </ol>
+</div>
+<script>
+  const addItemInput = document.getElementById('addItem');
+  const addNewButton = document.getElementById('addNew');
+  const shoppingList = document.getElementById('sList');
+
+  function addOne() {
+    const value = addItemInput.value;
+    const li = document.createElement('li');
+    const textNode = document.createTextNode(value);
+    li.appendChild(textNode);
+    shoppingList.appendChild(li);
+    addItemInput.value = '';
+  }
+
+  addNewButton.onclick = addOne;
+</script>
+</body>
+</html>
