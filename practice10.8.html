@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Complete JavaScript Course</title>
+</head>
+<body>
+  <div id="message"></div>
+  <div id="output"></div>
+  <script>
+    const names = ['Ada Lovelace', 'Grace Hopper', 'Katherine Johnson', 'Mary Jackson'];
+    const message = document.getElementById('message');
+    const output = document.getElementById('output');
+
+    function build() {
+      let html = '<table>';
+      names.forEach((name, index) => {
+        html += `<tr data-row="${index}" data-name="${name}" onclick="getData(this)">`;
+        html += `<td class="box">${index}</td>`;
+        html += `<td>${name}</td>`;
+        html += '</tr>';
+      });
+      html += '</table>';
+      output.innerHTML = html;
+    }
+
+    function getData(row) {
+      const rowValue = row.getAttribute('data-row');
+      const nameValue = row.getAttribute('data-name');
+      message.textContent = `Row: ${rowValue}, Name: ${nameValue}`;
+    }
+
+    build();
+  </script>
+</body>
+</html>
