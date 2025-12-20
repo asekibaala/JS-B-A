@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<title>JS Tester</title>
+<style>
+.active {
+display: block !important;
+}
+.myText {
+display: none;
+}
+.title {
+font-size: 1.5em;
+background-color: #ddd;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="title">Title #1</div>
+<div class="myText">Just some text #1</div>
+<div class="title">Title #2</div>
+<div class="myText">Just some text #2</div>
+<div class="title">Title #3</div>
+<div class="myText">Just some text #3</div>
+</div>
+<script>
+  const titles = document.querySelectorAll('.title');
+  const contentBlocks = document.querySelectorAll('.myText');
+
+  function hideAll() {
+    contentBlocks.forEach((block) => block.classList.remove('active'));
+  }
+
+  titles.forEach((title) => {
+    title.addEventListener('click', () => {
+      const relatedContent = title.nextElementSibling;
+      const isActive = relatedContent.classList.contains('active');
+      hideAll();
+      if (!isActive) {
+        relatedContent.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
