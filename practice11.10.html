@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 11.10 - Form Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        label {
+            display: grid;
+            gap: 0.35rem;
+        }
+        input {
+            padding: 0.5rem;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validator</h1>
+    <form id="signup">
+        <label>First Name
+            <input type="text" name="first">
+        </label>
+        <label>Last Name
+            <input type="text" name="last">
+        </label>
+        <label>Age
+            <input type="number" name="age" min="0">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.querySelector("#signup");
+
+        function checker(str) {
+            console.log("Length:", str.length);
+            return str.length;
+        }
+
+        form.addEventListener("submit", (event) => {
+            let error = false;
+            const first = form.first.value.trim();
+            const last = form.last.value.trim();
+            const age = Number(form.age.value);
+
+            // Validate first name
+            if (!first) {
+                console.log("Error: first name required");
+                error = true;
+            } else {
+                checker(first);
+            }
+
+            // Validate last name
+            if (!last) {
+                console.log("Error: last name required");
+                error = true;
+            } else {
+                checker(last);
+            }
+
+            // Validate age
+            if (!form.age.value) {
+                console.log("Error: age required");
+                error = true;
+            } else if (Number.isNaN(age) || age < 19) {
+                console.log("Error: age must be 19 or over");
+                error = true;
+            } else {
+                checker(form.age.value);
+            }
+
+            if (error) {
+                event.preventDefault();
+                console.log("Form submission blocked due to errors.");
+            } else {
+                console.log("Form valid, submitting...");
+            }
+        });
+    </script>
+</body>
+</html>
