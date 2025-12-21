@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 11.5 - Update Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+            gap: 1rem;
+            padding: 2rem;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .output {
+            min-height: 60px;
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #fff;
+        }
+        button:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="output">Your message will appear here.</div>
+    <input type="text" name="message" placeholder="Your Message">
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <div>
+        <button class="btn3">Log</button>
+    </div>
+
+    <script>
+        const output = document.querySelector(".output");
+        const input = document.querySelector('input[name="message"]');
+        const btn1 = document.querySelector(".btn1");
+        const btn2 = document.querySelector(".btn2");
+        const btn3 = document.querySelector(".btn3");
+
+        // Button 1: push input value to the output div.
+        btn1.addEventListener("click", (event) => {
+            output.textContent = input.value || "Please type something first.";
+            logEvent("Button 1 clicked", event);
+        });
+
+        // Button 2: clear the input and output.
+        btn2.addEventListener("click", (event) => {
+            input.value = "";
+            output.textContent = "Cleared.";
+            logEvent("Button 2 clicked", event);
+        });
+
+        // Button 3: log details about the target.
+        btn3.addEventListener("click", (event) => {
+            logEvent("Button 3 clicked", event);
+        });
+
+        function logEvent(label, event) {
+            console.log(label);
+            console.log("Event type:", event.type);
+            console.log("Target:", event.target);
+            console.log("Target text:", event.target.textContent);
+            console.log("Current message:", input.value);
+        }
+    </script>
+</body>
+</html>
