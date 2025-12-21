@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 11.7 - Input Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .output1 {
+            min-height: 48px;
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        input {
+            padding: 0.5rem;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="output1">Your name will appear here.</div>
+    <input type="text" placeholder="First Name" name="first"><br>
+    <input type="text" placeholder="Last Name" name="last"><br>
+
+    <script>
+        const output = document.querySelector(".output1");
+        const firstInput = document.querySelector("input[name='first']");
+        const lastInput = document.querySelector("input[name='last']");
+
+        function updateOutput() {
+            const first = firstInput.value.trim();
+            const last = lastInput.value.trim();
+            const fullName = `${first} ${last}`.trim();
+            output.textContent = fullName || "Your name will appear here.";
+        }
+
+        function logFocusBlur(event) {
+            console.log(event.type);
+        }
+
+        firstInput.addEventListener("change", updateOutput);
+        lastInput.addEventListener("change", updateOutput);
+
+        firstInput.addEventListener("focus", logFocusBlur);
+        firstInput.addEventListener("blur", logFocusBlur);
+        lastInput.addEventListener("focus", logFocusBlur);
+        lastInput.addEventListener("blur", logFocusBlur);
+    </script>
+</body>
+</html>
