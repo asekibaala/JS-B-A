@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 11.4 - Mouse Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+        }
+        .target {
+            width: 200px;
+            height: 200px;
+            display: grid;
+            place-items: center;
+            background: lightgray;
+            border-radius: 12px;
+            user-select: none;
+            transition: background-color 0.15s ease;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="target">hello world</div>
+
+    <script>
+        const box = document.querySelector(".target");
+
+        function setColor(color, event) {
+            console.log("Color:", color, "| Event:", event.type);
+            box.style.backgroundColor = color;
+        }
+
+        box.addEventListener("mousedown", (event) => setColor("green", event));
+        box.addEventListener("mouseover", (event) => setColor("red", event));
+        box.addEventListener("mouseout", (event) => setColor("yellow", event));
+        box.addEventListener("mouseup", (event) => setColor("blue", event));
+        box.addEventListener("click", (event) => setColor("green", event)); // click after mousedown
+    </script>
+</body>
+</html>
