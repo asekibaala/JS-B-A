@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 11.11 - Moving Square</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            position: relative;
+            background: #f0f0f5;
+            overflow: hidden;
+        }
+        .box {
+            width: 80px;
+            height: 80px;
+            background: purple;
+            position: absolute;
+            top: 120px;
+            left: 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+        .hint {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            font-family: Arial, sans-serif;
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="hint">Click the purple square to move it.</div>
+    <div class="box"></div>
+
+    <script>
+        const box = document.querySelector(".box");
+
+        const state = {
+            speed: 20,
+            direction: 1,
+            position: 0
+        };
+
+        let timer = null;
+
+        function moveBox() {
+            let counter = 30;
+            timer = setInterval(() => {
+                if (counter < 1) {
+                    clearInterval(timer);
+                    timer = null;
+                    return;
+                }
+                counter -= 1;
+
+                // Move
+                state.position += state.speed * state.direction;
+
+                // Bounce at bounds
+                if (state.position > 800 || state.position < 0) {
+                    state.direction *= -1;
+                    state.position = Math.max(0, Math.min(800, state.position));
+                }
+
+                box.style.left = `${state.position}px`;
+                console.log(`Position: ${state.position}px, Direction: ${state.direction}, Step: ${counter}`);
+            }, 50);
+        }
+
+        box.addEventListener("click", () => {
+            if (timer) {
+                return; // ignore clicks while moving
+            }
+            moveBox();
+        });
+    </script>
+</body>
+</html>
