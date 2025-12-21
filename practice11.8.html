@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 11.8 - Key and Paste Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .output {
+            min-height: 48px;
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        input {
+            padding: 0.5rem;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="output">Numbers you type will appear here.</div>
+    <input type="text" placeholder="First input">
+    <input type="text" placeholder="Second input">
+
+    <script>
+        const output = document.querySelector(".output");
+        const eles = document.querySelectorAll("input");
+
+        eles.forEach((el) => {
+            el.addEventListener("keydown", (event) => {
+                const { key } = event;
+                if (/^[0-9]$/.test(key)) {
+                    output.textContent += key;
+                }
+            });
+
+            el.addEventListener("keyup", (event) => {
+                console.log("keyup:", event.key);
+            });
+
+            el.addEventListener("paste", () => {
+                console.log("paste");
+            });
+        });
+    </script>
+</body>
+</html>
