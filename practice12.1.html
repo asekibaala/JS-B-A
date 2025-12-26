@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 12.1 - Find and Replace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        input {
+            padding: 0.5rem;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    <label>
+        Search for:
+        <input id="sText" type="text">
+    </label>
+    <label>
+        Replace with:
+        <input id="rText" type="text">
+    </label>
+    <button id="replaceBtn">Replace</button>
+
+    <script>
+        const output = document.getElementById("output");
+        const searchInput = document.getElementById("sText");
+        const replaceInput = document.getElementById("rText");
+        const button = document.getElementById("replaceBtn");
+
+        button.addEventListener("click", lookup);
+
+        function lookup() {
+            const s = output.textContent;
+            const rt = replaceInput.value;
+            const searchValue = searchInput.value;
+
+            if (!searchValue) {
+                console.log("Enter text to search for.");
+                return;
+            }
+
+            const regex = new RegExp(searchValue, "g");
+            const matches = s.match(regex);
+
+            if (matches) {
+                const updated = s.replace(regex, rt);
+                output.textContent = updated;
+                console.log("Replaced", matches.length, "match(es).");
+            } else {
+                console.log("No matches found.");
+            }
+        }
+    </script>
+</body>
+</html>
