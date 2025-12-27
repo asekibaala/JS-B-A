@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Breakpoints Walkthrough</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 540px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+        }
+        .output {
+            min-height: 48px;
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="output">Open DevTools to follow the breakpoint steps.</div>
+    <button id="runBtn">Run Example</button>
+
+    <script>
+        const output = document.querySelector(".output");
+        const runBtn = document.getElementById("runBtn");
+
+        // Step-by-step guide to set breakpoints in Chrome:
+        // 1) Open this file in Chrome. Press F12 (or Cmd+Option+I on macOS) to open DevTools.
+        //    Expectation: DevTools opens, defaulting to the Elements or last used panel.
+        // 2) Go to the Sources panel. In the left file tree, click this file (breakpoints-example.html).
+        //    Expectation: The file's code appears in the center editor.
+        // 3) Scroll to the function below. Click in the gutter (line numbers) on the line with "const doubled = value * 2;".
+        //    Expectation: A blue breakpoint marker appears; the line highlights.
+        // 4) Click the "Run Example" button on the page.
+        //    Expectation: Execution pauses on your breakpoint; the line is highlighted yellow.
+        // 5) Inspect values in Scope (right sidebar) or hover variables in the paused line to see their current values.
+        //    Expectation: You see value, doubled, and msg with their current values.
+        // 6) Click "Step over" (F10) to move to the next line.
+        //    Expectation: Execution advances one line; variables update as code runs.
+        // 7) Click "Resume" (F8) to let the script finish.
+        //    Expectation: The page updates with the final message and DevTools shows "Resumed".
+        // 8) Try adding another breakpoint on "output.textContent = msg;" to see how multiple breakpoints behave.
+        //    Expectation: Execution will stop at each breakpoint in order.
+
+        function computeMessage(value) {
+            const doubled = value * 2; // Set breakpoint here (Step 3)
+            const msg = `Input: ${value}, doubled: ${doubled}`;
+            output.textContent = msg; // Optional second breakpoint
+            console.log(msg);
+        }
+
+        runBtn.addEventListener("click", () => {
+            computeMessage(7);
+        });
+    </script>
+</body>
+</html>
