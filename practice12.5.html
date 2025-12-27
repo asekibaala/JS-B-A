@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 12.5 - try/catch/finally</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 540px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .output {
+            min-height: 60px;
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="output">Open the console to see try/throw/catch/finally in action.</div>
+    <button id="runBtn">Run Checks</button>
+
+    <script>
+        const output = document.querySelector(".output");
+        const runBtn = document.getElementById("runBtn");
+
+        function checkValue(val) {
+            try {
+                if (isNaN(val)) {
+                    throw new Error("Value is not a number");
+                }
+                console.log("Got a number:", val);
+            } catch (err) {
+                console.log("Caught error:", err.message);
+            } finally {
+                console.log("Finished check for:", val);
+            }
+        }
+
+        function runDemo() {
+            output.textContent = "Running checks... see console for details.";
+            checkValue("abc"); // should throw and be caught
+            checkValue(42);    // should pass as a number
+            output.textContent = "Done. Check the console for logs.";
+        }
+
+        runBtn.addEventListener("click", runDemo);
+        runDemo();
+    </script>
+</body>
+</html>
