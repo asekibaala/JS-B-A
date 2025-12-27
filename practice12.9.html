@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 12.9 - JSON stringify/parse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+        }
+        .note {
+            font-size: 0.95rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="note">Open the console to see stringify and parse in action.</div>
+    <button id="runBtn">Run</button>
+
+    <script>
+        const tasks = [
+            { name: "Learn JavaScript", status: true },
+            { name: "Try JSON", status: false },
+            { name: "Build a demo", status: true }
+        ];
+
+        function demoJson() {
+            const newStr = JSON.stringify(tasks);
+            console.log("Stringified JSON:", newStr);
+
+            const newObj = JSON.parse(newStr);
+            console.log("Parsed back to object:", newObj);
+
+            newObj.forEach((item, idx) => {
+                console.log(`Item ${idx + 1}:`, item.name, "- status:", item.status);
+            });
+        }
+
+        document.getElementById("runBtn").addEventListener("click", demoJson);
+        demoJson();
+    </script>
+</body>
+</html>
