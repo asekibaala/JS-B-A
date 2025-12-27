@@ -55,7 +55,7 @@
 
             function extractEmails() {
                 const text = inputArea.value;
-                const matches = text.match(/[\\w.+-]+@[\\w.-]+\\.[A-Za-z]{2,}/g) || [];
+                const matches = text.match(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/g) || [];
 
                 const uniqueEmails = [];
                 matches.forEach(email => {
