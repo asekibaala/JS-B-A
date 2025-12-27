@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Project - Email Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 0.75rem;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+        button {
+            padding: 0.7rem 1.2rem;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+        }
+        .stack {
+            display: grid;
+            gap: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="stack">
+        <label>
+            Paste text with emails:
+            <textarea name="txtarea" rows="4" cols="50"></textarea>
+        </label>
+        <button id="extractBtn">Get Emails</button>
+        <label>
+            Extracted emails (unique):
+            <textarea name="txtarea2" rows="4" cols="50" readonly></textarea>
+        </label>
+    </div>
+
+    <script>
+        const inputArea = document.querySelector('textarea[name="txtarea"]');
+        const outputArea = document.querySelector('textarea[name="txtarea2"]');
+        const extractBtn = document.getElementById("extractBtn");
+
+        function extractEmails() {
+            const text = inputArea.value;
+            const matches = text.match(/[\\w.+-]+@[\\w.-]+\\.[A-Za-z]{2,}/g) || [];
+
+            const uniqueEmails = [];
+            matches.forEach(email => {
+                if (!uniqueEmails.includes(email)) {
+                    uniqueEmails.push(email);
+                }
+            });
+
+            outputArea.value = uniqueEmails.join(", ");
+        }
+
+        extractBtn.addEventListener("click", extractEmails);
+    </script>
+</body>
+</html>
