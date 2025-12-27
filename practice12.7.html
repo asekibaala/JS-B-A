@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 12.7 - Local Storage Shopping List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .ready {
+            background-color: #ddd;
+            color: red;
+            text-decoration: line-through;
+        }
+        .main {
+            display: flex;
+            gap: 0.5rem;
+        }
+        input {
+            flex: 1;
+            padding: 0.5rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <input placeholder="New Item" value="test item" maxlength="30">
+        <button>Add</button>
+    </div>
+    <ul class="output"></ul>
+
+    <script>
+        const input = document.querySelector(".main input");
+        const addBtn = document.querySelector(".main button");
+        const output = document.querySelector(".output");
+        let tasks = [];
+
+        function loadTasks() {
+            const stored = localStorage.getItem("tasklist");
+            if (stored) {
+                try {
+                    tasks = JSON.parse(stored) || [];
+                } catch (e) {
+                    tasks = [];
+                }
+            }
+        }
+
+        function saveTasks() {
+            localStorage.setItem("tasklist", JSON.stringify(tasks));
+        }
+
+        function syncTasksFromDOM() {
+            tasks = [];
+            const items = output.querySelectorAll("li");
+            items.forEach(li => {
+                tasks.push({
+                    name: li.textContent,
+                    checked: li.classList.contains("ready")
+                });
+            });
+            saveTasks();
+        }
+
+        function buildTaskItem(task) {
+            const li = document.createElement("li");
+            li.textContent = task.name;
+            if (task.checked) {
+                li.classList.add("ready");
+            }
+            li.addEventListener("click", () => {
+                li.classList.toggle("ready");
+                syncTasksFromDOM();
+            });
+            output.appendChild(li);
+        }
+
+        function buildList() {
+            output.innerHTML = "";
+            tasks.forEach(buildTaskItem);
+        }
+
+        function addTask() {
+            const name = input.value.trim();
+            if (!name) return;
+            tasks.push({ name, checked: false });
+            saveTasks();
+            buildList();
+            input.value = "";
+            input.focus();
+        }
+
+        addBtn.addEventListener("click", addTask);
+        input.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") addTask();
+        });
+
+        loadTasks();
+        buildList();
+    </script>
+</body>
+</html>
