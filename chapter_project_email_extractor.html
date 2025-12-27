@@ -40,7 +40,7 @@
             Paste text with emails:
             <textarea name="txtarea" rows="4" cols="50"></textarea>
         </label>
-        <button id="extractBtn">Get Emails</button>
+        <button id="extractBtn" type="button">Get Emails</button>
         <label>
             Extracted emails (unique):
             <textarea name="txtarea2" rows="4" cols="50" readonly></textarea>
@@ -48,25 +48,27 @@
     </div>
 
     <script>
-        const inputArea = document.querySelector('textarea[name="txtarea"]');
-        const outputArea = document.querySelector('textarea[name="txtarea2"]');
-        const extractBtn = document.getElementById("extractBtn");
+        document.addEventListener("DOMContentLoaded", () => {
+            const inputArea = document.querySelector('textarea[name="txtarea"]');
+            const outputArea = document.querySelector('textarea[name="txtarea2"]');
+            const extractBtn = document.getElementById("extractBtn");
 
-        function extractEmails() {
-            const text = inputArea.value;
-            const matches = text.match(/[\\w.+-]+@[\\w.-]+\\.[A-Za-z]{2,}/g) || [];
+            function extractEmails() {
+                const text = inputArea.value;
+                const matches = text.match(/[\\w.+-]+@[\\w.-]+\\.[A-Za-z]{2,}/g) || [];
 
-            const uniqueEmails = [];
-            matches.forEach(email => {
-                if (!uniqueEmails.includes(email)) {
-                    uniqueEmails.push(email);
-                }
-            });
+                const uniqueEmails = [];
+                matches.forEach(email => {
+                    if (!uniqueEmails.includes(email)) {
+                        uniqueEmails.push(email);
+                    }
+                });
 
-            outputArea.value = uniqueEmails.join(", ");
-        }
+                outputArea.value = uniqueEmails.join(", ");
+            }
 
-        extractBtn.addEventListener("click", extractEmails);
+            extractBtn.addEventListener("click", extractEmails);
+        });
     </script>
 </body>
 </html>
