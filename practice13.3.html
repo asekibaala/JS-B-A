@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 13.3 - Async Counter with await</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+        pre {
+            background: #f5f5f5;
+            border-radius: 6px;
+            padding: 0.75rem;
+            min-height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Async/Await Counter</h1>
+    <p>Press start to run a loop that awaits a Promise which increments a global counter every second.</p>
+    <button id="startBtn">Start Counting</button>
+    <pre id="log">Waiting...</pre>
+
+    <script>
+        let counter = 0;
+        const logEl = document.getElementById("log");
+        const startBtn = document.getElementById("startBtn");
+
+        startBtn.addEventListener("click", () => {
+            logEl.textContent = "";
+            counter = 0;
+            runLoop();
+        });
+
+        function delayedIncrement(x) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    counter += 1;
+                    resolve({ value: x, counter });
+                }, 1000);
+            });
+        }
+
+        async function logCounter(x) {
+            writeLog(`ready ${x} counter:${counter}`);
+            const result = await delayedIncrement(x);
+            writeLog(`x value ${result.value} counter:${result.counter}`);
+        }
+
+        async function runLoop() {
+            for (let i = 1; i <= 10; i++) {
+                await logCounter(i);
+            }
+        }
+
+        function writeLog(message) {
+            logEl.textContent += `${message}\n`;
+            console.log(message);
+        }
+    </script>
+</body>
+</html>
