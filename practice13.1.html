@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 13.1 - Greeting Callback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        input, button {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Greeting with a Callback</h1>
+    <p>Enter a full name to see how a callback receives data from another function.</p>
+    <input id="fullNameInput" type="text" placeholder="Ada Lovelace">
+    <button id="greetBtn">Send to callback</button>
+    <pre id="output">Waiting for a name...</pre>
+
+    <script>
+        const fullNameInput = document.getElementById("fullNameInput");
+        const output = document.getElementById("output");
+        const greetButton = document.getElementById("greetBtn");
+
+        greetButton.addEventListener("click", () => {
+            const name = fullNameInput.value.trim();
+
+            if (!name) {
+                output.textContent = "Please enter a full name first.";
+                return;
+            }
+
+            processFullName(name, greet);
+        });
+
+        // Step 1: callback that expects the full name as an array
+        function greet(fullName) {
+            const message = `Hello ${fullName.join(" ")}!`;
+            output.textContent = message;
+            console.log(message);
+        }
+
+        // Steps 2-5: function that prepares data, then calls the callback
+        function processFullName(nameString, callbackFn) {
+            const fullNameArray = nameString.split(" ");
+            callbackFn(fullNameArray);
+        }
+    </script>
+</body>
+</html>
