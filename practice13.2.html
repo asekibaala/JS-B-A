@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 13.2 - Promise Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+        pre {
+            background: #f5f5f5;
+            border-radius: 6px;
+            padding: 0.75rem;
+            min-height: 96px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Counting with Promises</h1>
+    <p>Click start to resolve a Promise, then watch chained <code>then()</code> calls feed values into a callback.</p>
+    <button id="startBtn">Start Counting</button>
+    <pre id="log">Waiting...</pre>
+
+    <script>
+        const logEl = document.getElementById("log");
+        const startBtn = document.getElementById("startBtn");
+
+        startBtn.addEventListener("click", runCounterChain);
+
+        function counter(value) {
+            const message = typeof value === "string" ? value : String(value);
+            logEl.textContent += `${message}\n`;
+            console.log(message);
+            return value;
+        }
+
+        function runCounterChain() {
+            logEl.textContent = "";
+
+            const startCounting = new Promise((resolve) => {
+                resolve("Start Counting");
+            });
+
+            startCounting
+                .then(counter) // outputs "Start Counting"
+                .then(() => "one")
+                .then(counter) // outputs "one"
+                .then(() => "two")
+                .then(counter) // outputs "two"
+                .then(() => "three")
+                .then(counter); // outputs "three"
+        }
+    </script>
+</body>
+</html>
