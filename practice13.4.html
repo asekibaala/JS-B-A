@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 13.4 - Password Checker Promise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        input, button {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+        pre {
+            background: #f5f5f5;
+            border-radius: 6px;
+            padding: 0.75rem;
+            min-height: 140px;
+        }
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .note {
+            color: #555;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Password Checker with Promises</h1>
+    <p class="note">Allowed passwords: <code>planet!</code>, <code>galaxy2024</code>, <code>asteroid</code>, <code>nebula#5</code></p>
+    <div class="actions">
+        <input id="passwordInput" type="text" placeholder="Type a password to test">
+        <button id="checkBtn">Check password</button>
+        <button id="runSamplesBtn">Run sample passwords</button>
+    </div>
+    <pre id="log">Waiting for a password...</pre>
+
+    <script>
+        const allowedPasswords = ["planet!", "galaxy2024", "asteroid", "nebula#5"];
+        const logEl = document.getElementById("log");
+        const passwordInput = document.getElementById("passwordInput");
+        const checkBtn = document.getElementById("checkBtn");
+        const runSamplesBtn = document.getElementById("runSamplesBtn");
+
+        checkBtn.addEventListener("click", () => {
+            const pwd = passwordInput.value.trim();
+            if (!pwd) {
+                logEl.textContent = "Please enter a password to check.\n";
+                return;
+            }
+            logEl.textContent = "";
+            checkPassword(pwd);
+        });
+
+        runSamplesBtn.addEventListener("click", () => {
+            logEl.textContent = "";
+            const samplePasswords = ["planet!", "wrongpass", "asteroid", "guest", "nebula#5"];
+            samplePasswords.forEach(checkPassword);
+        });
+
+        function login(password) {
+            return allowedPasswords.includes(password);
+        }
+
+        function passwordStatus(password) {
+            return new Promise((resolve, reject) => {
+                const isValid = login(password);
+                const payload = { password, status: isValid };
+
+                if (isValid) {
+                    resolve(payload);
+                } else {
+                    reject(payload);
+                }
+            });
+        }
+
+        function checkPassword(password) {
+            passwordStatus(password)
+                .then((result) => writeLog(`Resolved: ${result.password} => ${result.status}`))
+                .catch((error) => writeLog(`Rejected: ${error.password} => ${error.status}`));
+        }
+
+        function writeLog(message) {
+            logEl.textContent += `${message}\n`;
+            console.log(message);
+        }
+
+        // Send several passwords on load to demonstrate the flow.
+        runSamplesBtn.click();
+    </script>
+</body>
+</html>
