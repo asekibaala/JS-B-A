@@ -1,0 +1,6 @@
+[
+  { "id": 1, "item": "Saturn V rocket", "category": "hardware" },
+  { "id": 2, "item": "Voyager 1", "category": "probe" },
+  { "id": 3, "item": "Hubble Space Telescope", "category": "observatory" },
+  { "id": 4, "item": "Perseverance rover", "category": "rover" }
+]
